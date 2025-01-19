@@ -2,7 +2,6 @@ using DevFreela.API.ExceptionHandler;
 using DevFreela.API.Models;
 using DevFreela.API.Persistence;
 using DevFreela.API.Services;
-using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,8 +17,9 @@ builder.Services.AddScoped<IConfigService, ConfigService>();
 builder.Services.AddExceptionHandler<ApiExceptionHandler>();
 builder.Services.AddProblemDetails();
 
+string connectionString = builder.Configuration.GetConnectionString("dev_freela_cs");
 builder.Services.AddDbContext<DevFreelaDbContext>(options =>
-    options.UseInMemoryDatabase("dev_freela"));
+    options.UseSqlServer(connectionString));
 
 
 builder.Services.AddControllers();
