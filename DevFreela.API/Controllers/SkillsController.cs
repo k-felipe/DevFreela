@@ -1,7 +1,5 @@
-﻿using DevFreela.API.Entities;
-using DevFreela.API.Models;
-using DevFreela.API.Persistence;
-using Microsoft.AspNetCore.Http;
+﻿using DevFreela.Application.Models;
+using DevFreela.Application.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DevFreela.API.Controllers
@@ -10,48 +8,37 @@ namespace DevFreela.API.Controllers
     [ApiController]
     public class SkillsController : ControllerBase
     {
-        private readonly DevFreelaDbContext _context;
-        public SkillsController(DevFreelaDbContext context)
+        private readonly ISkillService _service;
+        public SkillsController(ISkillService service)
         {
-            _context = context;
+            _service = service;
         }
         [HttpGet]
         public IActionResult GetAll()
         {
-            //criar skillsviewmodel
-            var skills = _context.Skills.ToList();
-            return Ok(skills);
+            var result = _service.GetAll();
+
+            return Ok(result);
         }
-
-        //[HttpGet("{id}")]
-        //public IActionResult GetById(int id)
-        //{
-        //    return Ok();
-        //}
-
         [HttpPost]
         public IActionResult Post(int id, CreateSkillInputModel model)
         {
-            var skill = new Skill(model.Description);
+            var result = _service.Insert(id, model);
 
-            _context.Skills.Add(skill);
-            _context.SaveChanges();
+            if (!result.IsSuccess) return BadRequest(result.Message);
 
-            //return CreatedAtAction(nameof(GetById), new { id = 1 }, model);
             return NoContent();
         }
 
         [HttpPut("{id}")]
         public IActionResult Put(int id, UpdateSkillInputModel model)
         {
+            var result = _service.Update(id, model);
+            if (!result.IsSuccess) return BadRequest(result.Message);
+
             return NoContent();
         }
 
-        //[HttpDelete("{id}")]
-        //public IActionResult Delete(int id)
-        //{
-        //    return NoContent();
-        //}
 
     }
 }
