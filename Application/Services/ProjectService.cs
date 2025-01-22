@@ -1,6 +1,7 @@
 ﻿using DevFreela.Application.Models;
 using DevFreela.Core.Entities;
 using DevFreela.Infrastructure.Persistence;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace DevFreela.Application.Services
@@ -8,9 +9,11 @@ namespace DevFreela.Application.Services
     public class ProjectService : IProjectService
     {
         private readonly DevFreelaDbContext _context;
-        public ProjectService(DevFreelaDbContext context)
+        private readonly IMediator _mediator;
+        public ProjectService(DevFreelaDbContext context, IMediator mediator)
         {
             _context = context;
+            _mediator = mediator;
         }
 
         public ResultViewModel<List<ProjectItemViewModel>> GetAll(string search = "", int page = 0, int size = 3)
