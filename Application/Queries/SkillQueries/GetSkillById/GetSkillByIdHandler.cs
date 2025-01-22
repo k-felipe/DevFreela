@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DevFreela.Application.Queries.SkillQueries.GetSkillById
+﻿namespace DevFreela.Application.Queries.SkillQueries.GetSkillById
 {
     internal class GetSkillByIdHandler
     {

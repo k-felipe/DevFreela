@@ -1,6 +1,4 @@
-﻿using System.Collections.Specialized;
-
-namespace DevFreela.Core.Entities
+﻿namespace DevFreela.Core.Entities
 {
     public class Skill : BaseEntity
     {
@@ -9,7 +7,7 @@ namespace DevFreela.Core.Entities
             Description = description;
         }
         public string Description { get; private set; }
-        
+
         public List<UserSkill> UserSkills { get; set; }
 
         public void Update(string description)

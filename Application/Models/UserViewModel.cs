@@ -19,7 +19,10 @@ namespace DevFreela.Application.Models
 
         public static UserViewModel FromEntity(User user)
         {
-            var skills = user.Skills.Select(u => u.Skill.Description).ToList();
+            var skills = user.Skills?
+       .Where(u => u.Skill != null)
+       .Select(u => u.Skill.Description)
+       .ToList() ?? new List<string>();
 
             return new UserViewModel(user.FullName, user.Email, user.BirthDate, skills);
         }

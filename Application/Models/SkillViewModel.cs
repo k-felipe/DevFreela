@@ -15,8 +15,10 @@ namespace DevFreela.Application.Models
 
         public static SkillViewModel FromEntity(Skill skill)
         {
-            var userSkills = skill.UserSkills.Select(u => u.Skill.Description).ToList();
-
+            var userSkills = skill.UserSkills?
+                    .Where(u => u.Skill != null)
+                    .Select(u => u.Skill.Description)
+                    .ToList() ?? new List<string>();
             return new SkillViewModel(skill.Description, userSkills);
         }
     }

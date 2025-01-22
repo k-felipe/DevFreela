@@ -1,5 +1,4 @@
-﻿using Azure.Core;
-using DevFreela.Application.Models;
+﻿using DevFreela.Application.Models;
 using DevFreela.Infrastructure.Persistence;
 using MediatR;
 using Microsoft.EntityFrameworkCore;

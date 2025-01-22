@@ -3,7 +3,7 @@ using MediatR;
 
 namespace DevFreela.Application.Commands.UserCommands.InsertUserSkills
 {
-    public class InsertUserSkillsCommand :IRequest<ResultViewModel>
+    public class InsertUserSkillsCommand : IRequest<ResultViewModel>
     {
         public InsertUserSkillsCommand(int[] skillsIds, int id)
         {
