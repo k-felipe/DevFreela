@@ -1,4 +1,5 @@
-﻿using DevFreela.Application.Commands.DeleteProject;
+﻿using DevFreela.Application.Commands.CompleteProject;
+using DevFreela.Application.Commands.DeleteProject;
 using DevFreela.Application.Commands.InsertProject;
 using DevFreela.Application.Commands.StartProject;
 using DevFreela.Application.Commands.UpdateProject;
