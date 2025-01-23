@@ -1,4 +1,4 @@
-﻿namespace DevFreela.Application.Models
+﻿namespace DevFreela.Application.Notification.ProjectCreated
 {
     public class FreelanceTotalCostConfig
     {
