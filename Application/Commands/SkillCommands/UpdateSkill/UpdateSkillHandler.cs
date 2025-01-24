@@ -1,8 +1,6 @@
 ﻿using DevFreela.Application.Models;
 using DevFreela.Core.Repositories;
-using DevFreela.Infrastructure.Persistence;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 
 namespace DevFreela.Application.Commands.SkillCommands.UpdateSkill
 {
@@ -19,7 +17,7 @@ namespace DevFreela.Application.Commands.SkillCommands.UpdateSkill
             if (skill is null)
                 return ResultViewModel<SkillViewModel>.Error("Habilidade não existe.");
 
-           await _repository.Update(skill);
+            await _repository.Update(skill);
 
             return ResultViewModel.Success();
         }

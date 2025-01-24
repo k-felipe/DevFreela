@@ -1,7 +1,6 @@
 ﻿using DevFreela.Application.Models;
 using DevFreela.Core.Entities;
 using DevFreela.Core.Repositories;
-using DevFreela.Infrastructure.Persistence;
 using MediatR;
 
 namespace DevFreela.Application.Commands.UserCommands.InsertUserSkills
@@ -21,7 +20,7 @@ namespace DevFreela.Application.Commands.UserCommands.InsertUserSkills
             if (userSkills is null)
                 return ResultViewModel.Error("Habilidade(s) não encontrada(s).");
 
-          await _repository.AddSkill(userSkills);
+            await _repository.AddSkill(userSkills);
 
             return ResultViewModel.Success();
         }

@@ -1,5 +1,4 @@
-﻿using Azure.Core;
-using DevFreela.Core.Entities;
+﻿using DevFreela.Core.Entities;
 using DevFreela.Core.Repositories;
 using DevFreela.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
@@ -18,7 +17,7 @@ namespace DevFreela.Infrastructure.Repositories
             _context.Skills.Add(skill);
             await _context.SaveChangesAsync();
 
-            return skill.Id;   
+            return skill.Id;
         }
 
         public async Task<bool> Exists(int id)
@@ -28,7 +27,7 @@ namespace DevFreela.Infrastructure.Repositories
 
         public async Task<List<Skill>> GetAll()
         {
-            return  await _context.Skills.ToListAsync();
+            return await _context.Skills.ToListAsync();
         }
 
         public async Task<Skill?> GetById(int id)

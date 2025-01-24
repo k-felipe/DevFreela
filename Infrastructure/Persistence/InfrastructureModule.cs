@@ -28,7 +28,7 @@ namespace DevFreela.Infrastructure.Persistence
         {
             services.AddScoped<IProjectRepository, ProjectRepository>();
             services.AddScoped<ISkillRepository, SkillRepository>();
-            services.AddScoped<IUserRepository, UserRepository>(); 
+            services.AddScoped<IUserRepository, UserRepository>();
             return services;
         }
     }

@@ -2,11 +2,6 @@
 using DevFreela.Core.Repositories;
 using DevFreela.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DevFreela.Infrastructure.Repositories
 {
@@ -36,7 +31,7 @@ namespace DevFreela.Infrastructure.Repositories
             return await _context.Users
                .Include(u => u.Skills)
                .ThenInclude(u => u.Skill)
-               .SingleOrDefaultAsync(u => u.Id ==id);
+               .SingleOrDefaultAsync(u => u.Id == id);
         }
     }
 }
