@@ -8,11 +8,11 @@ namespace DevFreela.Application.Commands.SkillCommands.UpdateSkill
 
         public UpdateSkillCommand(int id, string description)
         {
-            SkillId = id;
+            Id = id;
             Description = description;
         }
 
-        public int SkillId { get; set; }
+        public int Id { get; set; }
         public string Description { get; set; }
     }
 }

@@ -27,6 +27,8 @@ namespace DevFreela.Infrastructure.Persistence
         private static IServiceCollection AddRepository(this IServiceCollection services)
         {
             services.AddScoped<IProjectRepository, ProjectRepository>();
+            services.AddScoped<ISkillRepository, SkillRepository>();
+            services.AddScoped<IUserRepository, UserRepository>(); 
             return services;
         }
     }

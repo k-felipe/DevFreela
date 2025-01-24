@@ -1,4 +1,5 @@
 ﻿using DevFreela.Application.Models;
+using DevFreela.Core.Repositories;
 using DevFreela.Infrastructure.Persistence;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -7,20 +8,18 @@ namespace DevFreela.Application.Commands.SkillCommands.UpdateSkill
 {
     public class UpdateSkillHandler : IRequestHandler<UpdateSkillCommand, ResultViewModel>
     {
-        private readonly DevFreelaDbContext _context;
-        public UpdateSkillHandler(DevFreelaDbContext context)
+        private readonly ISkillRepository _repository;
+        public UpdateSkillHandler(ISkillRepository repository)
         {
-            _context = context;
+            _repository = repository;
         }
         public async Task<ResultViewModel> Handle(UpdateSkillCommand request, CancellationToken cancellationToken)
         {
-            var skill = await _context.Skills.SingleOrDefaultAsync(s => s.Id == request.SkillId);
+            var skill = await _repository.GetById(request.Id);
             if (skill is null)
                 return ResultViewModel<SkillViewModel>.Error("Habilidade não existe.");
 
-            skill.Update(request.Description);
-
-            await _context.SaveChangesAsync();
+           await _repository.Update(skill);
 
             return ResultViewModel.Success();
         }
