@@ -33,5 +33,24 @@ namespace DevFreela.Infrastructure.Repositories
                .ThenInclude(u => u.Skill)
                .SingleOrDefaultAsync(u => u.Id == id);
         }
+
+        public async Task<User?> GetByEmail(string email)
+        {
+            return await _context.Users
+               .Include(u => u.Skills)
+               .ThenInclude(u => u.Skill)
+               .SingleOrDefaultAsync(u => u.Email == email);
+        }
+
+        public async Task<User?> Login(string email, string password)
+        {
+            return await _context.Users.SingleOrDefaultAsync(u => u.Email == email && u.Password == password);
+        }
+
+        public async Task Update(User user)
+        {
+            _context.Users.Update(user);
+            await _context.SaveChangesAsync();
+        }
     }
 }

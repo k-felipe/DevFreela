@@ -4,14 +4,15 @@ namespace DevFreela.Application.Models
 {
     public class UserViewModel
     {
-        public UserViewModel(string fullName, string email, DateTime birthDate, List<string> skills)
+        public UserViewModel(int id, string fullName, string email, DateTime birthDate, List<string> skills)
         {
+            Id = Id;
             FullName = fullName;
             Email = email;
             BirthDate = birthDate;
             Skills = skills;
         }
-
+        public int Id { get; private set; }
         public string FullName { get; private set; }
         public string Email { get; private set; }
         public DateTime BirthDate { get; private set; }
@@ -24,7 +25,7 @@ namespace DevFreela.Application.Models
        .Select(u => u.Skill.Description)
        .ToList() ?? new List<string>();
 
-            return new UserViewModel(user.FullName, user.Email, user.BirthDate, skills);
+            return new UserViewModel(user.Id, user.FullName, user.Email, user.BirthDate, skills);
         }
     }
 }

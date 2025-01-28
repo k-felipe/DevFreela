@@ -7,6 +7,7 @@ using DevFreela.Application.Commands.ProjectCommands.UpdateProject;
 using DevFreela.Application.Queries.ProjectQueries.GetAllProjects;
 using DevFreela.Application.Queries.ProjectQueries.GetProjectById;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DevFreela.API.Controllers
@@ -32,6 +33,7 @@ namespace DevFreela.API.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> Get(string search = "")
         {
 
